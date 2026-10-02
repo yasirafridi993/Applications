@@ -1,0 +1,39 @@
+[project]
+name = "smart-todo"
+version = "1.1.0"
+description = "Smart Todo - offline task manager with AdMob ads and Premium in-app purchase"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "flet>=0.86.0",
+    "flet-ads>=0.1.0",
+    # Local path dependency - see /android/README.md. Uncomment once
+    # flet_play_billing has been built following that README; until
+    # then monetization/iap/native_bridge.py safely no-ops instead of
+    # failing to import.
+    # "flet-play-billing @ file:///./android/flet_play_billing",
+]
+
+[tool.flet]
+org = "com.smarttodo"
+product = "Smart Todo"
+company = "Smart Todo"
+copyright = "Copyright (C) 2026 by Smart Todo"
+
+[tool.flet.app]
+path = "."
+
+# --- AdMob (monetization/admob) -------------------------------------------
+# Google requires a valid AdMob App ID in the manifest or the app can crash
+# on launch. This is the TEST app ID - safe to ship in debug builds only.
+# Swap it for your real AdMob App ID before a production/Play Store build
+# (see monetization/admob/config.py, which is the single source of truth
+# the rest of the app actually reads - this manifest entry must be kept in
+# sync with it by hand, since flet build reads this file literally).
+[tool.flet.android.meta_data]
+"com.google.android.gms.ads.APPLICATION_ID" = "ca-app-pub-3940256099942544~3347511713"
+
+[tool.flet.android.permission]
+"android.permission.INTERNET" = true
+"android.permission.ACCESS_NETWORK_STATE" = true
+"com.android.vending.BILLING" = true
