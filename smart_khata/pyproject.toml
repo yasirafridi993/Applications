@@ -1,0 +1,15 @@
+[project]
+name = "smart_khata"
+version = "0.1.0"
+description = "Smart Khata — a digital udhaar (credit) ledger built with Flet"
+readme = "README.md"
+authors = ["yasirafridi993@gamil.com"]
+requires-python = ">=3.10"
+dependencies = [
+	"flet>=0.24.0",
+	"reportlab>=4.2.0",
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
